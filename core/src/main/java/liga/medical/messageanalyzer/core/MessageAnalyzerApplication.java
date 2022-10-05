@@ -7,6 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = {"liga.medical.medicalmonitoring", "liga.medical.common.service"})
 public class MessageAnalyzerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(MedicalMonitoringApplication.class, args);
+        SpringApplication.run(MessageAnalyzerApplication.class, args);
     }
 }
