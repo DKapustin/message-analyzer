@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitConfig {
-    private static final String HOST = "localhost";
+    private static final String HOST = "rabbit";
     public static final String QUEUE = "common_monitoring";
 
     @Bean
