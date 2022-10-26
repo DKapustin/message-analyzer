@@ -12,15 +12,15 @@ public class MessageSenderServiceImpl implements MessageSenderService {
     private final AmqpTemplate amqpTemplate;
     private final ObjectMapper objectMapper;
 
-    public MessageSenderServiceImpl(AmqpTemplate amqpTemplate, ObjectMapper objectMapper){
+    public MessageSenderServiceImpl(AmqpTemplate amqpTemplate, ObjectMapper objectMapper) {
         this.amqpTemplate = amqpTemplate;
         this.objectMapper = objectMapper;
     }
 
     @Override
-    public void sendMessage(MessageDto messageDto, String queue) throws JsonProcessingException{
-       String message = objectMapper.writeValueAsString(messageDto);
-       amqpTemplate.convertAndSend(queue, message);
-       System.out.println("Сообщение " + message + " отправлено в очередь: " + queue );
+    public void sendMessage(MessageDto messageDto, String queue) throws JsonProcessingException {
+        String message = objectMapper.writeValueAsString(messageDto);
+        amqpTemplate.convertAndSend(queue, message);
+        System.out.println("Сообщение " + message + " отправлено в очередь: " + queue);
     }
 }

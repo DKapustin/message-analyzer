@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class MessageController {
     private final MessageSenderService messageSenderService;
 
-    public MessageController(MessageSenderService messageSenderService){
-        this.messageSenderService=messageSenderService;
+    public MessageController(MessageSenderService messageSenderService) {
+        this.messageSenderService = messageSenderService;
     }
 
-    @PostMapping()
-    ResponseEntity<String> sendMessage(@RequestBody MessageDto messageDto) throws JsonProcessingException{
+    @PostMapping
+    ResponseEntity<String> sendMessage(@RequestBody MessageDto messageDto) throws JsonProcessingException {
         messageSenderService.sendMessage(messageDto, RabbitConfig.QUEUE);
         return ResponseEntity.ok(messageDto.toString());
     }
