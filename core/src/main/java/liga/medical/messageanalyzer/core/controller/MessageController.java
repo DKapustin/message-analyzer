@@ -5,6 +5,7 @@ import liga.medical.messageanalyzer.core.api.MessageSenderService;
 import liga.medical.messageanalyzer.core.config.RabbitConfig;
 import org.springframework.http.ResponseEntity;
 import liga.medical.dto.MessageDto;
+import liga.medical.messageanalyzer.core.annotation.DBlog;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,8 @@ public class MessageController {
         this.messageSenderService = messageSenderService;
     }
 
-    @PostMapping
+    @DBlog
+    @PostMapping("/send")
     ResponseEntity<String> sendMessage(@RequestBody MessageDto messageDto) throws JsonProcessingException {
         messageSenderService.sendMessage(messageDto, RabbitConfig.QUEUE);
         return ResponseEntity.ok(messageDto.toString());
